@@ -1,4 +1,13 @@
+import sys
 from stats import wordcount, lettercount, report_sort
+
+def argparse():
+    if len(sys.argv) == 2:
+        return sys.argv[1]
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
 
 def printer(wordnum, reportlist):
     print("============ BOOKBOT ============")
@@ -11,8 +20,9 @@ def printer(wordnum, reportlist):
     print("============= END ===============")
 
 def main():
-    wordnum = wordcount("books/frankenstein.txt")
-    reportlist = report_sort("books/frankenstein.txt")
+    path = argparse()
+    wordnum = wordcount(path)
+    reportlist = report_sort(path)
 
     printer(wordnum, reportlist)
 
